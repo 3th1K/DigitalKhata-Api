@@ -10,8 +10,10 @@ public class AutomapperProfiles : Profile
     {
         CreateMap<User, UserLoginRequest>();
         CreateMap<UserLoginRequest, User>();
+
         CreateMap<User, UserRegisterRequest>();
         CreateMap<UserRegisterRequest, User>();
+        
         CreateMap<User, UserResponse>();
         CreateMap<UserResponse, User>();
     }

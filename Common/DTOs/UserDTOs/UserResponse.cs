@@ -4,11 +4,11 @@
     {
         public int UserId { get; set; }
 
-        public string Username { get; set; } = null!;
+        public string Username { get; set; } = string.Empty;
 
-        public string Email { get; set; } = null!;
+        public string Email { get; set; } = string.Empty;
 
-        public string Fullname { get; set; }
+        public string Fullname { get; set; } = string.Empty;
 
     }
 }
