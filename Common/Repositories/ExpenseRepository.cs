@@ -31,6 +31,7 @@ public class ExpenseRepository : IExpenseRepository
     {
 
         var newExpense = _mapper.Map<Expense>(request);
+        newExpense.Date = DateTime.Now;
 
         await _context.Expenses
             .AddAsync(newExpense);
@@ -58,5 +59,14 @@ public class ExpenseRepository : IExpenseRepository
     {
         var expense = await _context.Expenses.SingleOrDefaultAsync(e => e.ExpenseId == id) ?? null;
         return _mapper.Map<ExpenseResponse>(expense);
+    }
+
+    public async Task<List<ExpenseResponse>> GetUserTransactions(int userId, int otherUserId)
+    {
+        var transactions = await _context.Expenses
+            .Where(e => (e.PayerUserId == userId && e.PayeeUserId == otherUserId) ||
+                        (e.PayerUserId == otherUserId && e.PayeeUserId == userId))
+            .ToListAsync();
+        return _mapper.Map<List<ExpenseResponse>>(transactions);
     }
 }

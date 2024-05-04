@@ -1,4 +1,6 @@
-﻿namespace Common.DTOs.ExpenseDTOs;
+﻿using Common.Models;
+
+namespace Common.DTOs.ExpenseDTOs;
 
 public class ExpenseResponse
 {
@@ -14,3 +16,4 @@ public class ExpenseResponse
 
     public DateTime? Date { get; set; }
 }
+

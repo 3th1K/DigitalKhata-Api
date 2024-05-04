@@ -9,4 +9,5 @@ public interface IExpenseRepository
     public Task<ExpenseResponse> AddExpense(ExpenseAddRequest request);
     public Task<ExpenseResponse> DeleteExpense(int id);
     public Task<ExpenseResponse?> GetExpense(int id);
+    public Task<List<ExpenseResponse>> GetUserTransactions(int userId, int otherUserId);
 }
