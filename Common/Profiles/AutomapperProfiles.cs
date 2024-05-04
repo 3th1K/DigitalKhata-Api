@@ -1,6 +1,7 @@
 ﻿using Common.DTOs.UserDTOs;
 using Common.Models;
 using AutoMapper;
+using Common.DTOs.ExpenseDTOs;
 
 namespace Common.Profiles;
 
@@ -16,5 +17,11 @@ public class AutomapperProfiles : Profile
         
         CreateMap<User, UserResponse>();
         CreateMap<UserResponse, User>();
+
+        CreateMap<ExpenseAddRequest, Expense>();
+        CreateMap<Expense, ExpenseAddRequest>();
+
+        CreateMap<Expense, ExpenseResponse>();
+        CreateMap<ExpenseResponse, Expense>();
     }
 }

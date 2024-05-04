@@ -5,9 +5,10 @@ using Common;
 using Common.Interfaces;
 using Common.Models;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
 using Microsoft.IdentityModel.Tokens;
 
-namespace DataService.Repositories
+namespace Common.Repositories
 {
     public class IdentityRepository : IIdentityRepository
     {

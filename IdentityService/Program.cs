@@ -2,8 +2,7 @@
 using Common;
 using Common.Interfaces;
 using Common.Profiles;
-using Data.Repositories;
-using DataService.Repositories;
+using Common.Repositories;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);

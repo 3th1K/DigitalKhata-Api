@@ -16,7 +16,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Common\Common.csproj" />
-    <ProjectReference Include="..\DataService\DataService.csproj" />
   </ItemGroup>
 
 </Project>
