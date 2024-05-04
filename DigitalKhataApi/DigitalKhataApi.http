@@ -1,0 +1,6 @@
+@DigitalKhataApi_HostAddress = http://localhost:5189
+
+GET {{DigitalKhataApi_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
