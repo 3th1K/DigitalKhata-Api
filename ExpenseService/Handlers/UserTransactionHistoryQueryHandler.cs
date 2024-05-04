@@ -25,6 +25,11 @@ public class UserTransactionHistoryQueryHandler : IRequestHandler<UserTransactio
     }
     public async Task<ApiResult<UserTransactionHistory>> Handle(UserTransactionHistoryQuery request, CancellationToken cancellationToken)
     {
+        if (request.UserId == request.OtherUserId) 
+        {
+            _logger.LogError("Both user id's are same");
+            return ApiResult<UserTransactionHistory>.Failure(new { }, "Both user id's are same", 400, 8);
+        }
         var user = await _userRepository.GetUserById(request.UserId);
         var otherUser = await _userRepository.GetUserById(request.OtherUserId);
 

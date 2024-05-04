@@ -1,0 +1,73 @@
+{
+  "Routes": [
+    {
+      //login
+      "UpstreamPathTemplate": "/digital-khata/login",
+      "UpstreamHttpMethod": [ "Post" ],
+      "DownstreamPathTemplate": "/api/Identity/login",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 7170
+        }
+      ]
+    },
+    {
+      //register
+      "UpstreamPathTemplate": "/digital-khata/register",
+      "UpstreamHttpMethod": [ "Post" ],
+      "DownstreamPathTemplate": "/api/Identity/register",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 7170
+        }
+      ]
+    },
+    {
+      //search user by username
+      "UpstreamPathTemplate": "/digital-khata/user/search/{id}",
+      "UpstreamHttpMethod": [ "Get" ],
+      "DownstreamPathTemplate": "/api/User/search/{id}",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 7066
+        }
+      ]
+    },
+    {
+      //add expense
+      "UpstreamPathTemplate": "/digital-khata/expense/add",
+      "UpstreamHttpMethod": [ "Post" ],
+      "DownstreamPathTemplate": "/api/Expense/add",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 7161
+        }
+      ]
+    },
+    {
+      //get transaction history
+      "UpstreamPathTemplate": "/digital-khata/expense/transaction-history?userId={id1}&otherUserId={id2}",
+      "UpstreamHttpMethod": [ "Get" ],
+      "DownstreamPathTemplate": "/api/Expense/{id1}/transaction-history/{id2}",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 7161
+        }
+      ]
+    }
+
+  ],
+  "GlobalConfiguration": {
+    "BaseUrl": "https://localhost:7242"
+  }
+}
