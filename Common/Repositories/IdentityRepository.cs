@@ -52,12 +52,14 @@ namespace Common.Repositories
 
         private string GenerateJwtToken(User user)
         {
+            var role = "User";
             var jwtTokenHandler = new JwtSecurityTokenHandler();
             var key = Encoding.ASCII.GetBytes(TokenSecret);
             var claims = new List<Claim>();
             claims.Add(new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()));
             claims.Add(new Claim(JwtRegisteredClaimNames.Sub, user.Email));
             claims.Add(new Claim(JwtRegisteredClaimNames.Email, user.Email));
+            claims.Add(new Claim(ClaimTypes.Role, role));
             claims.Add(new Claim(ClaimTypes.Name, $"{user.Username}"));
             claims.Add(new Claim("userId", user.UserId.ToString()));
 
@@ -67,8 +69,8 @@ namespace Common.Repositories
             {
                 Subject = identity,
                 Expires = DateTime.UtcNow.Add(TokenLifetime),
-                Issuer = "mehedi-somesite",
-                Audience = "janina-bhai",
+                Issuer = "DigitalKhata",
+                Audience = "DigitalKhata",
                 SigningCredentials = credentials
             };
             var token = jwtTokenHandler.CreateToken(tokenDescriptor);

@@ -13,6 +13,9 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+//jwt
+builder.Services.AddJwtAuthentication(config);
+
 //db
 builder.Services.AddDbContext<DigitalKhataDbContext>(options =>
 {
@@ -42,6 +45,7 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();

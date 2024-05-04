@@ -2,6 +2,7 @@
 using Common.Models;
 using ExpenseService.Queries;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -9,6 +10,7 @@ namespace ExpenseService.Controllers;
 
 [Route("api/[controller]")]
 [ApiController]
+[Authorize]
 public class ExpenseController : ControllerBase
 {
     private readonly IMediator _mediator;
