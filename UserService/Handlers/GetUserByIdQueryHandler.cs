@@ -1,4 +1,5 @@
-﻿using Common.DTOs.UserDTOs;
+﻿using Common;
+using Common.DTOs.UserDTOs;
 using Common.Interfaces;
 using Ethik.Utility.Api;
 using MediatR;
@@ -21,9 +22,9 @@ public class GetUserByIdQueryHandler : IRequestHandler<GetUserByIdQuery, ApiResu
         if (user == null)
         {
             _logger.LogError($"User with id {request.Id} not found");
-            return ApiResult<UserResponse>.Failure(new { }, "Invalid User Id", 404, 9);
+            return ApiResultFactory.Failure<UserResponse>(ErrorConstants.InvalidUserId, "Invalid User Id", 404);
         }
         _logger.LogInformation("Fetching user details successful");
-        return ApiResult<UserResponse>.Success(user, "Fetched User Details");
+        return ApiResultFactory.Success(user, "Fetched User Details");
     }
 }

@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Common;
 using Common.DTOs.UserDTOs;
 using Common.Interfaces;
 using Ethik.Utility.Api;
@@ -24,9 +25,9 @@ public class SearchUserByUsernameQueryHandler : IRequestHandler<SearchUserByUser
         if (users == null || users.Count<1)
         {
             _logger.LogWarning("No user found containing query : {}", request.SearchString);
-            return ApiResult<List<UserResponse>>.Failure(new { }, "No Users Found", 404, 2);
+            return ApiResultFactory.Failure<List<UserResponse>>(ErrorConstants.SearchUserNotFound, "No Users Found", 404);
         }
         _logger.LogInformation("{} users found in search", users.Count);
-        return ApiResult<List<UserResponse>>.Success(users, $"{users.Count} users found in search");
+        return ApiResultFactory.Success(users, $"{users.Count} users found in search");
     }
 }

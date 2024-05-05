@@ -169,6 +169,78 @@ namespace Common {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Same user ids are provided.
+        /// </summary>
+        internal static string _0007_DESCRIPTION {
+            get {
+                return ResourceManager.GetString("0007_DESCRIPTION", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Transaction history cannot be fetched for same user. Provide different user ids to get the transaction history between specific users.
+        /// </summary>
+        internal static string _0007_SOLUTION {
+            get {
+                return ResourceManager.GetString("0007_SOLUTION", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Provided user ids are not valid. Can be one or both of them..
+        /// </summary>
+        internal static string _0008_DESCRIPTION {
+            get {
+                return ResourceManager.GetString("0008_DESCRIPTION", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please verify the provided user ids. Provide valid user ids..
+        /// </summary>
+        internal static string _0008_SOLUTION {
+            get {
+                return ResourceManager.GetString("0008_SOLUTION", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Provided user id is not valid.
+        /// </summary>
+        internal static string _0009_DESCRIPTION {
+            get {
+                return ResourceManager.GetString("0009_DESCRIPTION", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please provide a valid user id.
+        /// </summary>
+        internal static string _0009_SOLUTION {
+            get {
+                return ResourceManager.GetString("0009_SOLUTION", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No search result for the searched username.
+        /// </summary>
+        internal static string _0010_DESCRIPTION {
+            get {
+                return ResourceManager.GetString("0010_DESCRIPTION", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please try with some other search query..
+        /// </summary>
+        internal static string _0010_SOLUTION {
+            get {
+                return ResourceManager.GetString("0010_SOLUTION", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to 0006:Cannot create expense.
         /// </summary>
         internal static string err_add_expense_failure {
@@ -205,11 +277,47 @@ namespace Common {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to 0009:Invalid user id.
+        /// </summary>
+        internal static string err_invalid_user_id {
+            get {
+                return ResourceManager.GetString("err_invalid_user_id", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 0010:No users found wiith the given username.
+        /// </summary>
+        internal static string err_search_user_not_found {
+            get {
+                return ResourceManager.GetString("err_search_user_not_found", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to 0001:Token generation failed.
         /// </summary>
         internal static string err_token_generation_failed {
             get {
                 return ResourceManager.GetString("err_token_generation_failed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 0007:Both user ids are same.
+        /// </summary>
+        internal static string err_transaction_history_same_users {
+            get {
+                return ResourceManager.GetString("err_transaction_history_same_users", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 0008:One or both user id is invalid.
+        /// </summary>
+        internal static string err_transaction_history_user_not_found {
+            get {
+                return ResourceManager.GetString("err_transaction_history_user_not_found", resourceCulture);
             }
         }
         

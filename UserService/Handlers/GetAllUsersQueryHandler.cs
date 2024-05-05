@@ -1,4 +1,5 @@
-﻿using Common.DTOs.UserDTOs;
+﻿using Common;
+using Common.DTOs.UserDTOs;
 using Common.Interfaces;
 using Ethik.Utility.Api;
 using MediatR;
@@ -16,6 +17,6 @@ public class GetAllUsersQueryHandler : IRequestHandler<GetAllUsersQuery, ApiResu
     public async Task<ApiResult<List<UserResponse>>> Handle(GetAllUsersQuery request, CancellationToken cancellationToken)
     {
         var users = await _userRepository.GetAllUsers();
-        return ApiResult<List<UserResponse>>.Success(users, "Fetched All Users From Database");
+        return ApiResultFactory.Success(users, "Fetched All Users From Database");
     }
 }

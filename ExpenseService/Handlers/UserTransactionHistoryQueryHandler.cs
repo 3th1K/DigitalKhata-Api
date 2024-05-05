@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Common;
 using Common.DTOs.ExpenseDTOs;
 using Common.Interfaces;
 using Common.Models;
@@ -28,7 +29,7 @@ public class UserTransactionHistoryQueryHandler : IRequestHandler<UserTransactio
         if (request.UserId == request.OtherUserId) 
         {
             _logger.LogError("Both user id's are same");
-            return ApiResult<UserTransactionHistory>.Failure(new { }, "Both user id's are same", 400, 8);
+            return ApiResultFactory.Failure<UserTransactionHistory>(ErrorConstants.SameUsersInTransactionHistory, "Both user id's are same", 400);
         }
         var user = await _userRepository.GetUserById(request.UserId);
         var otherUser = await _userRepository.GetUserById(request.OtherUserId);
@@ -36,7 +37,7 @@ public class UserTransactionHistoryQueryHandler : IRequestHandler<UserTransactio
         if (user == null || otherUser == null)
         {
             _logger.LogError("One or both users not found.");
-            return ApiResult<UserTransactionHistory>.Failure(new { }, "One or both users not found.", 404, 7);
+            return ApiResultFactory.Failure<UserTransactionHistory>(ErrorConstants.OneOrBothUserNotFound, "One or both users not found.", 404);
         }
         var transactions = await _expenseRepository.GetUserTransactions(request.UserId, request.OtherUserId);
 
@@ -51,7 +52,7 @@ public class UserTransactionHistoryQueryHandler : IRequestHandler<UserTransactio
             { request.OtherUserId, netAmountForOtherUser }
         };
 
-        return ApiResult<UserTransactionHistory>.Success(userTransactionHistory, $"Successfully fetched transaction history of {user.Username} and {otherUser.Username}");
+        return ApiResultFactory.Success(userTransactionHistory, $"Successfully fetched transaction history of {user.Username} and {otherUser.Username}");
     }
     private decimal CalculateNetAmountForUser(List<ExpenseResponse> transactions, int userId)
     {

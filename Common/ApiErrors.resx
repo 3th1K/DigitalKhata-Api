@@ -153,6 +153,30 @@
   <data name="0006_SOLUTION" xml:space="preserve">
     <value>Please provide correct data to process expense request successfully.</value>
   </data>
+  <data name="0007_DESCRIPTION" xml:space="preserve">
+    <value>Same user ids are provided</value>
+  </data>
+  <data name="0007_SOLUTION" xml:space="preserve">
+    <value>Transaction history cannot be fetched for same user. Provide different user ids to get the transaction history between specific users</value>
+  </data>
+  <data name="0008_DESCRIPTION" xml:space="preserve">
+    <value>Provided user ids are not valid. Can be one or both of them.</value>
+  </data>
+  <data name="0008_SOLUTION" xml:space="preserve">
+    <value>Please verify the provided user ids. Provide valid user ids.</value>
+  </data>
+  <data name="0009_DESCRIPTION" xml:space="preserve">
+    <value>Provided user id is not valid</value>
+  </data>
+  <data name="0009_SOLUTION" xml:space="preserve">
+    <value>Please provide a valid user id</value>
+  </data>
+  <data name="0010_DESCRIPTION" xml:space="preserve">
+    <value>No search result for the searched username</value>
+  </data>
+  <data name="0010_SOLUTION" xml:space="preserve">
+    <value>Please try with some other search query.</value>
+  </data>
   <data name="err_add_expense_failure" xml:space="preserve">
     <value>0006:Cannot create expense</value>
   </data>
@@ -165,8 +189,20 @@
   <data name="err_invalid_payer_id" xml:space="preserve">
     <value>0003:Invalid payer id</value>
   </data>
+  <data name="err_invalid_user_id" xml:space="preserve">
+    <value>0009:Invalid user id</value>
+  </data>
+  <data name="err_search_user_not_found" xml:space="preserve">
+    <value>0010:No users found wiith the given username</value>
+  </data>
   <data name="err_token_generation_failed" xml:space="preserve">
     <value>0001:Token generation failed</value>
+  </data>
+  <data name="err_transaction_history_same_users" xml:space="preserve">
+    <value>0007:Both user ids are same</value>
+  </data>
+  <data name="err_transaction_history_user_not_found" xml:space="preserve">
+    <value>0008:One or both user id is invalid</value>
   </data>
   <data name="err_user_exists" xml:space="preserve">
     <value>0002:User already exists</value>
