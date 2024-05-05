@@ -28,9 +28,35 @@
     },
     {
       //search user by username
-      "UpstreamPathTemplate": "/digital-khata/user/search/{id}",
+      "UpstreamPathTemplate": "/digital-khata/user/search/{searchQuery}",
       "UpstreamHttpMethod": [ "Get" ],
-      "DownstreamPathTemplate": "/api/User/search/{id}",
+      "DownstreamPathTemplate": "/api/User/search/{searchQuery}",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 7066
+        }
+      ]
+    },
+    {
+      //get user profile by id
+      "UpstreamPathTemplate": "/digital-khata/user/profile/{id}",
+      "UpstreamHttpMethod": [ "Get" ],
+      "DownstreamPathTemplate": "/api/User/profile/{id}",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 7066
+        }
+      ]
+    },
+    {
+      //get all users
+      "UpstreamPathTemplate": "/digital-khata/user/all",
+      "UpstreamHttpMethod": [ "Get" ],
+      "DownstreamPathTemplate": "/api/User/all",
       "DownstreamScheme": "https",
       "DownstreamHostAndPorts": [
         {

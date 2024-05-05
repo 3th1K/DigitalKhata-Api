@@ -32,4 +32,21 @@ public class UserController : ControllerBase
         var users = await _mediator.Send(new SearchUserByUsernameQuery(searchQuery));
         return users.Result;
     }
+
+    [HttpGet]
+    [Route("profile/{id}")]
+    public async Task<ActionResult> GetUserProfile(int id)
+    {
+        var users = await _mediator.Send(new GetUserByIdQuery(id));
+        return users.Result;
+    }
+
+    [HttpGet]
+    [Route("all")]
+    [AllowAnonymous]
+    public async Task<ActionResult> GetAllUsers()
+    {
+        var users = await _mediator.Send(new GetAllUsersQuery());
+        return users.Result;
+    }
 }

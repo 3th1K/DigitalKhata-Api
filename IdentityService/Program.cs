@@ -18,7 +18,13 @@ builder.Services.AddSwaggerGen();
 //db
 builder.Services.AddDbContext<DigitalKhataDbContext>(options =>
 {
-    options.UseSqlServer(config.GetConnectionString("DefaultConnection"));
+    options.UseSqlServer(config.GetConnectionString("DefaultConnection"), sqlServerOptionsAction: sqlOptions =>
+    {
+        sqlOptions.EnableRetryOnFailure(
+        maxRetryCount: 5,
+        maxRetryDelay: TimeSpan.FromSeconds(30),
+        errorNumbersToAdd: null);
+    });
 });
 
 //automapper
