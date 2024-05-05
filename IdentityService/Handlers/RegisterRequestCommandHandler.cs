@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Common;
 using Common.DTOs.UserDTOs;
 using Common.Interfaces;
 using Common.Models;
@@ -27,7 +28,7 @@ public class RegisterRequestCommandHandler : IRequestHandler<UserRegisterRequest
         if (existingUser != null)
         {
             _logger.LogError("user already exists with same username or email");
-            return ApiResult<string>.Failure(null, "User already exists with the provided username or email", 409);
+            return ApiResultFactory.Failure<string>(ErrorConstants.UserAlreadyExists, "User already exists with the provided username or email", 409);
         }
 
         var addedUser = await _userRepository.CreateUser(user);
@@ -37,10 +38,10 @@ public class RegisterRequestCommandHandler : IRequestHandler<UserRegisterRequest
         if (token == string.Empty)
         {
             _logger.LogError("Token Generation Failed");
-            return ApiResult<string>.Failure(null, "Incorrect Credentials", 401, 001);
+            return ApiResultFactory.Failure<string>(ErrorConstants.TokenGenerationFailed, "Incorrect Credentials", 401);
         }
 
         _logger.LogInformation("User Registration Successful");
-        return ApiResult<string>.Success(token, "User Registration Successful & Token Generation Successful");
+        return ApiResultFactory.Success(token, "User Registration Successful & Token Generation Successful");
     }
 }

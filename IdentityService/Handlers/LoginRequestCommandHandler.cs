@@ -1,4 +1,5 @@
-﻿using Common.DTOs.UserDTOs;
+﻿using Common;
+using Common.DTOs.UserDTOs;
 using Common.Interfaces;
 using Ethik.Utility.Api;
 using MediatR;
@@ -20,9 +21,9 @@ public class LoginRequestCommandHandler : IRequestHandler<UserLoginRequest, ApiR
         if (token == string.Empty) 
         {
             _logger.LogError("Token Generation Failed");
-            return ApiResult<string>.Failure(null, "Incorrect Credentials", 401, 001);
+            return ApiResultFactory.Failure<string>(ErrorConstants.TokenGenerationFailed, "Incorrect Credentials", 401);
         }
         _logger.LogInformation("Token Generated Successfully");
-        return ApiResult<string>.Success(token, "Token Generation Successful");
+        return ApiResultFactory.Success(token, "Token Generation Successful");
     }
 }

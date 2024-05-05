@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Common;
 using Common.DTOs.ExpenseDTOs;
 using Common.DTOs.UserDTOs;
 using Common.Interfaces;
@@ -29,7 +30,7 @@ public class ExpenseAddRequestHandler : IRequestHandler<ExpenseAddRequest, ApiRe
         if (payer == null) 
         {
             _logger.LogError("Expense Add Unsuccessful, invalid payer id");
-            return ApiResult<ExpenseResponse>.Failure(new { }, "Invalid payer id", 500, 3);
+            return ApiResultFactory.Failure<ExpenseResponse>(ErrorConstants.InvalidPayerId, "Invalid payer id", 400);
         }
 
         UserResponse payee = await _userRepository.GetUserById(request.PayeeUserId);
@@ -37,22 +38,22 @@ public class ExpenseAddRequestHandler : IRequestHandler<ExpenseAddRequest, ApiRe
         if (payee == null)
         {
             _logger.LogError("Expense Add Unsuccessful, invalid payee id");
-            return ApiResult<ExpenseResponse>.Failure(new { }, "Invalid payee id", 500, 4);
+            return ApiResultFactory.Failure<ExpenseResponse>(ErrorConstants.InvalidPayeeId, "Invalid payee id", 400);
         }
 
         if(request.Amount<1)
         {
             _logger.LogError("Expense Add Unsuccessful, invalid amount, amount cannot be less that 1");
-            return ApiResult<ExpenseResponse>.Failure(new { }, "Invalid amount, amount cannot be less that 1", 500, 5);
+            return ApiResultFactory.Failure<ExpenseResponse>(ErrorConstants.InvalidExpenseAmount, "Invalid amount, amount cannot be less that 1", 400);
         }
 
         ExpenseResponse createdExpense = await _expenseRepository.AddExpense(request);
         if (createdExpense == null) 
         {
             _logger.LogError("Expense Add Unsuccessful");
-            return ApiResult<ExpenseResponse>.Failure(new { }, "Expense was not added", 500, 6);
+            return ApiResultFactory.Failure<ExpenseResponse>(ErrorConstants.AddExpenseFailure, "Expense was not added", 500);
         }
         _logger.LogInformation("Expense Add Successful");
-        return ApiResult<ExpenseResponse>.Success(createdExpense, "Expense was added");
+        return ApiResultFactory.Success(createdExpense, "Expense was added");
     }
 }
