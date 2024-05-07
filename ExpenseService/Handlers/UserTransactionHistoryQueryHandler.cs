@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using Common;
 using Common.DTOs.ExpenseDTOs;
+using Common.DTOs.UserDTOs;
 using Common.Interfaces;
 using Common.Models;
 using Ethik.Utility.Api;
@@ -65,5 +66,31 @@ public class UserTransactionHistoryQueryHandler : IRequestHandler<UserTransactio
             .Sum(e => e.Amount);
 
         return totalReceived - totalPaid;
+    }
+}
+
+public class UserExpenseQueryHandler : IRequestHandler<UserExpensesQuery, ApiResult<List<UserResponse>>>
+{
+    private readonly ILogger<UserExpenseQueryHandler> _logger;
+    private readonly IExpenseRepository _expenseRepository;
+
+    public UserExpenseQueryHandler(ILogger<UserExpenseQueryHandler> logger, IExpenseRepository expenseRepository)
+    {
+        _expenseRepository = expenseRepository;
+        _logger = logger;
+    }
+    public async Task<ApiResult<List<UserResponse>>> Handle(UserExpensesQuery request, CancellationToken cancellationToken)
+    {
+        List<UserResponse> users = await _expenseRepository.GetUsersWithExpenses(request.UserId);
+        if (users == null || users.Count < 1)
+        {
+            _logger.LogError("User does not have any expenses");
+            return ApiResultFactory.Failure<List<UserResponse>>(ErrorConstants.NoUserExpenseFound, "No user expense was found");
+        }
+        else 
+        {
+            _logger.LogInformation("Fetched user expenses");
+            return ApiResultFactory.Success(users, "Fetched user expenses");
+        }
     }
 }

@@ -18,4 +18,5 @@ public class ErrorConstants
     public const string OneOrBothUserNotFound = "err_transaction_history_user_not_found";
     public const string InvalidUserId = "err_invalid_user_id";
     public const string SearchUserNotFound = "err_search_user_not_found";
+    public const string NoUserExpenseFound = "err_no_user_expenses";
 }

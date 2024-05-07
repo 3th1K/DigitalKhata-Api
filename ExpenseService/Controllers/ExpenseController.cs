@@ -31,10 +31,18 @@ public class ExpenseController : ControllerBase
 
     [HttpGet]
     [Route("{userId}/transaction-history/{otherUserId}")]
-    public async Task<ActionResult<UserTransactionHistory>> GetUserTransactionHistory(int userId, int otherUserId)
+    public async Task<IActionResult> GetUserTransactionHistory(int userId, int otherUserId)
     {
         var transactionHistory = await _mediator.Send(new UserTransactionHistoryQuery(userId, otherUserId));
         return transactionHistory.Result;
+    }
+
+    [HttpGet]
+    [Route("expense-users/{id}")]
+    public async Task<IActionResult> GetUserExpenses(int id)
+    {
+        var userExpenses = await _mediator.Send(new UserExpensesQuery(id));
+        return userExpenses.Result;
     }
 
     

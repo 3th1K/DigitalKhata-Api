@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using Common;
 using Common.DTOs.ExpenseDTOs;
+using Common.DTOs.UserDTOs;
 using Common.Interfaces;
 using Common.Models;
 using Microsoft.EntityFrameworkCore;
@@ -68,5 +69,25 @@ public class ExpenseRepository : IExpenseRepository
                         (e.PayerUserId == otherUserId && e.PayeeUserId == userId))
             .ToListAsync();
         return _mapper.Map<List<ExpenseResponse>>(transactions);
+    }
+
+    public async Task<List<UserResponse>> GetUsersWithExpenses(int userId)
+    {
+        var payerUsers = _context.Expenses
+               .Where(e => e.PayeeUserId == userId)
+               .Select(e => e.PayerUser)
+               .Distinct();
+
+        var payeeUsers = _context.Expenses
+            .Where(e => e.PayerUserId == userId)
+            .Select(e => e.PayeeUser)
+            .Distinct();
+
+        var payers = await payerUsers.ToListAsync();
+        var payees = await payeeUsers.ToListAsync();
+
+        var users = payers.Union(payees).ToList();
+
+        return _mapper.Map<List<UserResponse>>(users);
     }
 }

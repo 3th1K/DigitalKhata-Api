@@ -177,6 +177,12 @@
   <data name="0010_SOLUTION" xml:space="preserve">
     <value>Please try with some other search query.</value>
   </data>
+  <data name="0011_DESCRIPTION" xml:space="preserve">
+    <value>User did not made any transactions and does not have any expenses</value>
+  </data>
+  <data name="0011_SOLUTION" xml:space="preserve">
+    <value>User should make a transaction to see the expense made</value>
+  </data>
   <data name="err_add_expense_failure" xml:space="preserve">
     <value>0006:Cannot create expense</value>
   </data>
@@ -191,6 +197,9 @@
   </data>
   <data name="err_invalid_user_id" xml:space="preserve">
     <value>0009:Invalid user id</value>
+  </data>
+  <data name="err_no_user_expenses" xml:space="preserve">
+    <value>0011:User does not have any expenses</value>
   </data>
   <data name="err_search_user_not_found" xml:space="preserve">
     <value>0010:No users found wiith the given username</value>

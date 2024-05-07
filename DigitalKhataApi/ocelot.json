@@ -90,6 +90,19 @@
           "Port": 7161
         }
       ]
+    },
+    {
+      //get user expenses
+      "UpstreamPathTemplate": "/digital-khata/expense/users-expenses?userId={id}",
+      "UpstreamHttpMethod": [ "Get" ],
+      "DownstreamPathTemplate": "/api/Expense/expense-users/{id}",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 7161
+        }
+      ]
     }
 
   ],

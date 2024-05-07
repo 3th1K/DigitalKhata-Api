@@ -241,6 +241,24 @@ namespace Common {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to User did not made any transactions and does not have any expenses.
+        /// </summary>
+        internal static string _0011_DESCRIPTION {
+            get {
+                return ResourceManager.GetString("0011_DESCRIPTION", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to User should make a transaction to see the expense made.
+        /// </summary>
+        internal static string _0011_SOLUTION {
+            get {
+                return ResourceManager.GetString("0011_SOLUTION", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to 0006:Cannot create expense.
         /// </summary>
         internal static string err_add_expense_failure {
@@ -282,6 +300,15 @@ namespace Common {
         internal static string err_invalid_user_id {
             get {
                 return ResourceManager.GetString("err_invalid_user_id", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 0011:User does not have any expenses.
+        /// </summary>
+        internal static string err_no_user_expenses {
+            get {
+                return ResourceManager.GetString("err_no_user_expenses", resourceCulture);
             }
         }
         
