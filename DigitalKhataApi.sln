@@ -13,6 +13,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UserService", "UserService\
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ExpenseService", "ExpenseService\ExpenseService.csproj", "{D03F74A6-E1A0-406A-BADD-37646EC73A11}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ethik.Utility", "Ethik.Utility\Ethik.Utility.csproj", "{6578C673-D3A8-4E14-837B-DC77B7D2450C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{D03F74A6-E1A0-406A-BADD-37646EC73A11}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D03F74A6-E1A0-406A-BADD-37646EC73A11}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D03F74A6-E1A0-406A-BADD-37646EC73A11}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6578C673-D3A8-4E14-837B-DC77B7D2450C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6578C673-D3A8-4E14-837B-DC77B7D2450C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6578C673-D3A8-4E14-837B-DC77B7D2450C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6578C673-D3A8-4E14-837B-DC77B7D2450C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
